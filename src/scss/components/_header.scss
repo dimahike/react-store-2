@@ -1,0 +1,46 @@
+@import '../variables';
+
+#header {
+  background-color: $mainBlue;
+  display: flex;
+  padding: 0.8rem 2rem;
+  justify-content: space-between;
+  a {
+    align-items: center;
+    display: flex;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    color: $mainYellow;
+    p {
+      color: $mainWhite;
+      margin-left: 0.5rem;
+      font-size: 1.3rem;
+    }
+  }
+
+  .cart {
+    display: flex;
+    align-items: center;
+    color: $lightBlue;
+    border-radius: 0.7rem;
+    border: 2px solid $lightBlue;
+    padding: 0.3rem 0.7rem;
+    p {
+      color: $lightBlue;
+      font-size: 1.5rem;
+    }   
+        &:hover {
+      background-color: $lightBlue;
+      color: $mainBlue;
+      p {
+        color: $mainBlue;
+      }
+    }
+  }
+
+  .fas {
+    font-size: 1.8rem;
+  }
+}

@@ -1,0 +1,10 @@
+@import 'variables';
+@import 'libs/normalize';
+
+@import 'components/all';
+
+body {
+  background: $mainWhite !important;
+  color: $mainDark !important;
+  font-family: 'Crimson Text', serif;
+}
