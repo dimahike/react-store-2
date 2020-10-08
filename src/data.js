@@ -47,7 +47,7 @@ export const storeProducts = [
   {
     id: 5,
     title: 'Monopoly Classic Game',
-    img: 'product5',
+    img: 'product6',
     price: 25,
     company: 'Mattel Games',
     info:
