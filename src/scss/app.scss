@@ -7,10 +7,13 @@ body {
   background: $mainWhite !important;
   color: $mainDark !important;
   font-family: 'Crimson Text', serif;
+  height: 100%;
+  min-height: 100%;
 }
 
 .wrapper {
   margin: 5%;
+  padding-bottom: 150px;
 }
 
 .paper {

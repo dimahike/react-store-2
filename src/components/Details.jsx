@@ -23,11 +23,10 @@ function Details() {
     totalCount = cartItems[item.id].totalCount;
   }
 
-  console.log('cartItems[item.id] from Detailsііі', cartItems[item.id]);
   return (
-    <>
+    <div id="details" className='wrapper'>
       {isLoaded ? (
-        <div id="details">
+        <div className="paper" >
           <div className="header">
             <h1>{item.title} </h1>
           </div>
@@ -56,7 +55,7 @@ function Details() {
           </div>
         </div>
       ) : (
-        <div id="details">
+        <div >
           <h1>hello</h1>
           <div className="header">
             <h1>{detailProduct.title} </h1>
@@ -86,7 +85,7 @@ function Details() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

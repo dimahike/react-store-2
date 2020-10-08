@@ -3,8 +3,11 @@
 #footer {
   background-color: $lightBlue;
   padding: 1rem;
-  margin-top: 2rem;
-
+  // margin-top: 2rem;
+  clear: both;
+  position: relative;
+  height: 150px;
+  margin-top: -150px;
   .contacts {
     display: flex;
     align-items: center;
