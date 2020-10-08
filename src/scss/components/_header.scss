@@ -5,6 +5,38 @@
   display: flex;
   padding: 0.8rem 2rem;
   justify-content: space-between;
+
+  @media only screen and (max-width: $bgScreen) {
+    padding: 0.8rem 1.5rem;
+    .logo-name {
+      margin-left: 0.5rem !important;
+      font-size: 1.2rem !important;
+    }
+  }
+  @media only screen and (max-width: $mdScreen) {
+    padding: 0.8rem 1rem;
+    .logo-name {
+      margin-left: 0.4rem !important;
+      font-size: 1.1rem !important;
+    }
+    .in-cart {
+      font-size: 1.4rem !important;
+    }
+  }
+  @media only screen and (max-width: $smScreen) {
+    padding: 0.8rem 0.5rem;
+    .logo-name {
+      margin-left: 0.3rem !important;
+      font-size: 1rem !important;
+    }
+
+    .fa-cart-plus {
+      font-size: 1.4rem !important;
+    }
+    .in-cart {
+      font-size: 1.4rem !important;
+    }
+  }
   a {
     align-items: center;
     display: flex;
@@ -13,7 +45,7 @@
     display: flex;
     align-items: center;
     color: $mainYellow;
-    p {
+    .logo-name {
       color: $mainWhite;
       margin-left: 0.5rem;
       font-size: 1.3rem;
@@ -27,19 +59,22 @@
     border-radius: 0.7rem;
     border: 2px solid $lightBlue;
     padding: 0.3rem 0.7rem;
-    p {
+    .in-cart {
       color: $lightBlue;
       font-size: 1.5rem;
     }
     &:hover {
       background-color: $lightBlue;
       color: $mainBlue;
-      p {
+      .in-cart {
         color: $mainBlue;
       }
     }
   }
-  .fas {
+  .fa-store {
     font-size: 1.8rem;
+  }
+  .fa-cart-plus {
+    font-size: 1.6rem;
   }
 }

@@ -9,22 +9,26 @@ function Header() {
       <Link to="/">
         <div className="logo">
           <i className="fas fa-store"></i>
-          <p>Simple Store</p>
+          <p className="logo-name">Simple Store</p>
         </div>
       </Link>
       <Link to="/cart">
         <div className="cart">
           {cart.totalCount ? (
             <>
-              <p style={{ fontSize: '1.4rem' }}>${cart.totalPrice}</p>
-              <p style={{ margin: '0 10px' }}>|</p>
+              <p className="in-cart">${cart.totalPrice}</p>
+              <p className="in-cart" style={{ margin: '0 10px' }}>
+                |
+              </p>
               <i className="fas fa-cart-plus small-cart"></i>
-              <p style={{ marginLeft: '10px' }}>{cart.totalCount}</p>
+              <p className="in-cart" style={{ marginLeft: '10px' }}>
+                {cart.totalCount}
+              </p>
             </>
           ) : (
             <>
               <i className="fas fa-cart-plus"></i>
-              <p style={{ marginLeft: '10px' }}>My Cart</p>
+              <p className="in-cart" style={{ marginLeft: '10px' }}>My Cart</p>
             </>
           )}
         </div>
