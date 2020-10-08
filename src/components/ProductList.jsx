@@ -14,9 +14,9 @@ function ProductList() {
     dispatch(setProducts());
   }, []);
 
-  const onAddProductToCart = React.useCallback((id) => {
+  const onAddProductToCart = (id) => {
     dispatch(addProductToCart(id));
-  }, []);
+  };
 
   return (
     <div className="wrapper">

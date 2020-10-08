@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import {
   addProductToCart,
   clearCart,
@@ -16,26 +15,17 @@ function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector(({ cart }) => cart);
 
-  const onClickAddProduct = React.useCallback(
-    (id) => () => {
-      dispatch(addProductToCart(id));
-    },
-    [],
-  );
+  const onClickAddProduct = (id) => () => {
+    dispatch(addProductToCart(id));
+  };
 
-  const onClickSubtractProduct = React.useCallback(
-    (id) => () => {
-      dispatch(subtractProductToCart(id));
-    },
-    [],
-  );
+  const onClickSubtractProduct = (id) => () => {
+    dispatch(subtractProductToCart(id));
+  };
 
-  const onClickDeleteProduct = React.useCallback(
-    (id) => () => {
-      dispatch(deleteProductToCart(id));
-    },
-    [],
-  );
+  const onClickDeleteProduct = (id) => () => {
+    dispatch(deleteProductToCart(id));
+  };
 
   const onClickClearCart = () => {
     dispatch(clearCart());

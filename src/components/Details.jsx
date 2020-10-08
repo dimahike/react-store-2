@@ -10,9 +10,9 @@ function Details() {
   const { item, isLoaded } = useSelector(({ details }) => details);
   const cartItems = useSelector(({ cart }) => cart.items);
 
-  const onHandleAddProduct = React.useCallback(() => {
+  const onHandleAddProduct = () => {
     dispatch(addProductToCart(item.id));
-  }, []);
+  };
 
   console.log('cartItems', cartItems);
   let totalPrice = 0;
@@ -57,7 +57,7 @@ function Details() {
         </div>
       ) : (
         <div id="details">
-        <h1>hello</h1>
+          <h1>hello</h1>
           <div className="header">
             <h1>{detailProduct.title} </h1>
           </div>
