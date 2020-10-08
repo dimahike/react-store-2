@@ -24,12 +24,9 @@ function Details() {
   }
 
   return (
-    <div id="details" className='wrapper'>
+    <div id="details" className="wrapper">
       {isLoaded ? (
-        <div className="paper" >
-          <div className="header">
-            <h1>{item.title} </h1>
-          </div>
+        <div className="paper">
           <div className="body">
             <div className="left">
               <img src={imageProduct(item.img)} alt={item.title} />
@@ -38,6 +35,7 @@ function Details() {
               <div className="right-header">
                 <h2 className="title">{item.title} </h2>
                 <p className="subtitle">{item.company}</p>
+                <p className="subtitle2">Price: $ {item.price}</p>
               </div>
               <div className="right-body">
                 <h3>About this item</h3>
@@ -55,7 +53,7 @@ function Details() {
           </div>
         </div>
       ) : (
-        <div >
+        <div>
           <h1>hello</h1>
           <div className="header">
             <h1>{detailProduct.title} </h1>

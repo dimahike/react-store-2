@@ -1,27 +1,9 @@
 @import '../variables';
 
 #details {
-  .header {
-    margin-bottom: 40px;
-    h1 {
-      text-align: center;
-      color: $mainBlue;
-    }
-  }
   .body {
     display: grid;
     grid-template-columns: 50% 50%;
-
-    @media only screen and (max-width: $mdScreen) {
-      grid-template-columns: 100%;
-      .left {
-        margin-bottom: 30px;
-        img {
-          max-width: 100%;
-          max-height: 300px;
-        }
-      }
-    }
 
     .left {
       flex-grow: 1;
@@ -39,11 +21,32 @@
       padding: 3% 5%;
       .right-header {
         margin-bottom: 20px;
+        .title{
+          color: $mainBlue;
+        }
+        .subtitle2 {
+          font-weight: bold;
+          color: $lightBlue;
+        }
       }
       .details-btn {
         display: flex;
         justify-content: flex-end;
         margin-top: 50px;
+      }
+    }
+  }
+  @media only screen and (max-width: $mdScreen) {
+    .body {
+      grid-template-columns: 100%;
+
+      .left {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        img {
+          max-width: 100%;
+          max-height: 300px;
+        }
       }
     }
   }
