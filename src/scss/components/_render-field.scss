@@ -1,0 +1,25 @@
+@import '../variables';
+
+.redux-form-field {
+  margin: 7px 0px;
+  label {
+    font-weight: 600;
+  }
+  .box {
+    margin-top: 3px;
+    input {
+      width: 100%;
+      margin-bottom: 2px;
+      font-size: 1.2rem;
+      padding: 5px;
+      border-radius: 0.2rem;
+      border: 1px solid $mainBlue;
+    }
+    span {
+      color: $mainYellow;
+      i {
+        margin-right: 3px;
+      }
+    }
+  }
+}

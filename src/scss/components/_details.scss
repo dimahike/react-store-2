@@ -1,0 +1,42 @@
+@import '../variables';
+
+#details {
+  margin: 5%;
+  padding: 5%;
+  background-color: #fff;
+
+  .header {
+    margin-bottom: 40px;
+    h1 {
+      text-align: center;
+      color: $mainBlue;
+    }
+  }
+  .body {
+    display: flex;
+
+    .left {
+      flex-grow: 1;
+      flex-basis: 200px;
+      display: flex;
+      justify-content: center;
+      img {
+        max-width: 100%;
+        max-height: 500px;
+      }
+    }
+    .right {
+      flex-grow: 2;
+      flex-basis: 400px;
+      padding: 3% 5%;
+      .right-header {
+        margin-bottom: 20px;
+      }
+      .details-btn {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 50px;
+      }
+    }
+  }
+}

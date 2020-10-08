@@ -1,10 +1,17 @@
 @import '../variables';
 
 .product {
-  padding: 5% 7%;
-  background-color: #fff;
-  border-radius: 0.5rem;
-  // height: 500px;
+  margin: 30px;
+  @media only screen and (max-width: $bgScreen) {
+    margin: 25px;
+  }
+  @media only screen and (max-width: $mdScreen) {
+    margin: 15px;
+  }
+
+  @media only screen and (max-width: $smScreen) {
+    margin: 10px 0;
+  }
   .price {
     margin-bottom: 1rem;
     span {
@@ -28,37 +35,17 @@
   }
 
   .content {
-    .cart {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.5rem;
-      button {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 14px;
-        width: 145px;
-        background-color: $lightBlue;
-        color: $mainBlue;
-        font-size: 1rem;
-        font-weight: bold;
-        border-radius: 1.5rem;
-        border: $mainBlue;
-        cursor: pointer;
-        span {
-          margin: 0 5px;
-        }
-        &:hover {
-          background-color: $mainBlue;
-          color: $lightBlue;
-          border: $lightBlue;
-          span {
-            color: $lightBlue;
-          }
-        }
-      }
+    margin-top: 30px;
+    margin-bottom: 10px;
+    .title-content {
+      height: 100px;
     }
+  }
+  .cart {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
   }
 }

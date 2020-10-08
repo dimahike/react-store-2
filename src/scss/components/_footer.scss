@@ -1,0 +1,35 @@
+@import 'variables';
+
+#footer {
+  background-color: $lightBlue;
+  padding: 1rem;
+  margin-top: 2rem;
+  .contacts {
+    display: flex;
+    align-items: center;
+
+    .social-links-footer {
+      margin-left: 1rem;
+      display: flex;
+      span {
+        height: 36px;
+        width: 36px;
+        background-color: purple;
+        margin: 0.5rem;
+        border-radius: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+      .fab {
+        font-size: 21px;
+      }
+    }
+  }
+  .copyright {
+    margin: 1.1rem;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+}

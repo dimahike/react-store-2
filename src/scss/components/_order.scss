@@ -1,0 +1,33 @@
+@import '../variables';
+
+.order {
+  .title {
+    margin-bottom: 20px;
+  }
+  .order-btn {
+    button {
+      width: 100%;
+      margin-top: 45px;
+      padding: 8px 14px;
+      background-color: #009ffd;
+      color: #2a2a72;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 0.2rem;
+      border: #2a2a72;
+      cursor: pointer;
+      letter-spacing: 3px;
+      span {
+        margin: 0 5px;
+      }
+      &:hover {
+        background-color: $mainBlue;
+        color: $lightBlue;
+        border: $lightBlue;
+        span {
+          color: $lightBlue;
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import { storeProducts } from "../../data";
+
 const initialState = {
   items: [],
   totalPrice: 0,
@@ -17,31 +19,27 @@ const cart = (state = initialState, action) => {
       let currentProductItems;
       let currentTotalPrice;
       let currentTotalCount;
-
-      if (!state.items[action.payload.id]) {
-        currentProductItems = action.payload;
-        currentTotalPrice = action.payload.price;
+      const product = storeProducts.find((item) => (item.id === action.payload));
+      if (!state.items[action.payload]) {
+        currentProductItems = product;
+        currentTotalPrice = product.price;
         currentTotalCount = 1;
       }
-      if (state.items[action.payload.id]) {
-        currentProductItems = state.items[action.payload.id].item;
-        currentTotalPrice = state.items[action.payload.id].totalPrice + action.payload.price;
-        currentTotalCount = state.items[action.payload.id].totalCount + 1;
+      if (state.items[action.payload]) {
+        currentProductItems = state.items[action.payload].item;
+        currentTotalPrice = state.items[action.payload].totalPrice + product.price;
+        currentTotalCount = state.items[action.payload].totalCount + 1;
       }
 
       const newItems = {
         ...state.items,
-        [action.payload.id]: {
+        [action.payload]: {
           item: currentProductItems,
           totalCount: currentTotalCount,
           totalPrice: parseAndFixed(currentTotalPrice),
         },
       };
 
-      // const objectsToArrays = Object.values(newItems).map((obj) => obj.item);
-      // const arrayAllPizzas = [].concat.apply([], objectsToArrays);
-      // let totalPriceProducts
-      // newItems.map((item) => totalPriceProducts += item.totalPrice)
       console.log('initialState from cart:', state);
       return {
         ...state,
@@ -50,57 +48,59 @@ const cart = (state = initialState, action) => {
         totalPrice: parseAndFixed(getTotalPrice(newItems)),
       };
     }
-    case 'REMOVE_CART_ITEM': {
-      const currentPizzaItems = state.items[action.payload.id];
-      const removedPizzasItems = currentPizzaItems.items.splice(1);
+    case 'SUBTRACT_PRODUCT_CART': {
+      const currentPizzaItem = state.items[action.payload];
 
-      return {
-        ...state,
-        items: {
-          ...state.items,
-          [action.payload.id]: {
-            items: removedPizzasItems,
-            totalPrice: currentPizzaItems.totalPrice - action.payload.price,
+      if (currentPizzaItem.totalCount > 1) {
+        const sustractProductTotalPrice = currentPizzaItem.totalPrice - currentPizzaItem.item.price;
+
+        return {
+          ...state,
+          items: {
+            ...state.items,
+            [action.payload]: {
+              item: currentPizzaItem.item,
+              totalCount: currentPizzaItem.totalCount - 1,
+              totalPrice: sustractProductTotalPrice,
+            },
           },
-        },
-        totalCount: state.totalCount - 1,
-        totalPrice: state.totalPrice - action.payload.price,
-      };
-    }
-    case 'ADD_CART_ITEM': {
-      const currentPizzaItems = [
-        ...state.items[action.payload.id].items,
-        state.items[action.payload.id].items[0],
-      ];
+          totalCount: state.totalCount - 1,
+          totalPrice: state.totalPrice - currentPizzaItem.item.price,
+        };
+      }
 
-      return {
-        ...state,
-        items: {
-          ...state.items,
-          [action.payload.id]: {
-            items: currentPizzaItems,
-            totalPrice: state.items[action.payload.id].totalPrice + action.payload.price,
+      if (currentPizzaItem.totalCount === 1) {
+        delete state.items[action.payload];
+        console.log(' state.items', state.items[action.payload]);
+        console.log(' state.items', state.items);
+        return {
+          ...state,
+          items: {
+            ...state.items,
           },
-        },
-        totalCount: state.totalCount + 1,
-        totalPrice: state.totalPrice + action.payload.price,
-      };
+          totalCount: state.totalCount - 1,
+          totalPrice: parseAndFixed(getTotalPrice(state.items)),
+        };
+      } else {
+        console.log('something ran wrong in subtractProductToCart');
+      }
     }
-    case 'DELETE_CART_ITEM': {
-      const totalPriceCartItem = state.items[action.payload].totalPrice;
-      const totalAmountCartItem = state.items[action.payload].items.length;
 
+    case 'DELETE_PRODUCT_CART': {
+      const totalCountItems = state.totalCount - state.items[action.payload].totalCount;
       delete state.items[action.payload];
-
+      console.log(' state.items', state.items[action.payload.id]);
+      console.log(' state.items', state.items);
       return {
         ...state,
         items: {
           ...state.items,
         },
-        totalCount: state.totalCount - totalAmountCartItem,
-        totalPrice: state.totalPrice - totalPriceCartItem,
+        totalCount: totalCountItems,
+        totalPrice: parseAndFixed(getTotalPrice(state.items)),
       };
     }
+
     case 'CLEAR_CART': {
       return initialState;
     }

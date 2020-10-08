@@ -1,0 +1,27 @@
+@import '../variables';
+
+.btn-price-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  width: 145px;
+  background-color: $lightBlue;
+  color: $mainBlue;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 1.5rem;
+  border: $mainBlue;
+  cursor: pointer;
+  span {
+    margin: 0 5px;
+  }
+  &:hover {
+    background-color: $mainBlue;
+    color: $lightBlue;
+    border: $lightBlue;
+    span {
+      color: $lightBlue;
+    }
+  }
+}

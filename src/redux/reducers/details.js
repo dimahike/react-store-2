@@ -1,18 +1,19 @@
-import { storeProducts } from '../../data';
+import { detailProduct, storeProducts } from '../../data';
 
 const initialState = {
-  items: {},
+  item: detailProduct,
   isLoaded: false,
 };
 
 const products = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_DETAILS':
-      const product = storeProducts.find((item) => item.id === action.payload.id);
-      console.log('product from reducer', product, action.payload);
+      const product = storeProducts.find((item) => (item.id === action.payload));
+      console.log('product from details reducer', product, action.payload);
+
       return {
         ...state,
-        items: product,
+        item: product,
         isLoaded: true,
       };
 

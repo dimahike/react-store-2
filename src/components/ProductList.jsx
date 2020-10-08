@@ -1,9 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addProductToCart } from '../redux/actions/cart';
-// import { getProducts } from '../redux/actions/products';
 
-import { storeProducts } from '../data.js';
+import { addProductToCart } from '../redux/actions/cart';
 import ProductItem from './ProductItem';
 import { setProducts } from '../redux/actions/products';
 
@@ -14,24 +12,25 @@ function ProductList() {
 
   React.useEffect(() => {
     dispatch(setProducts());
-    console.log('storeProducts from productList: ', storeProducts);
   }, []);
 
-  const onAddProductToCart = React.useCallback((obj) => {
-    dispatch(addProductToCart(obj));
+  const onAddProductToCart = React.useCallback((id) => {
+    dispatch(addProductToCart(id));
   }, []);
 
   return (
-    <div className="product-list">
-      {isLoaded &&
-        items.map((obj) => (
-          <ProductItem
-            key={obj.id}
-            {...obj}
-            addedTotal={cartItems[obj.id] ? cartItems[obj.id] : ''}
-            onClickAddProduct={onAddProductToCart}
-          />
-        ))}
+    <div className="wrapper">
+      <div className="product-list">
+        {isLoaded &&
+          items.map((obj) => (
+            <ProductItem
+              key={`product_item_${obj.id}`}
+              {...obj}
+              addedTotal={cartItems[obj.id] ? cartItems[obj.id] : ''}
+              onClickAddProduct={onAddProductToCart}
+            />
+          ))}
+      </div>
     </div>
   );
 }

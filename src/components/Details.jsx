@@ -1,20 +1,93 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-
-import { setDetails } from '../redux/actions/details';
+import { detailProduct } from '../data';
+import { addProductToCart } from '../redux/actions/cart';
+import imageProduct from '../require-images';
+import Button from './Button';
 
 function Details() {
   const dispatch = useDispatch();
-  const id = useParams().id;
-  const { items, isLoaded } = useSelector(({ products }) => products);
+  const { item, isLoaded } = useSelector(({ details }) => details);
+  const cartItems = useSelector(({ cart }) => cart.items);
 
-  React.useEffect(() => {
-    dispatch(setDetails(id));
-  }, [id]);
+  const onHandleAddProduct = React.useCallback(() => {
+    dispatch(addProductToCart(item.id));
+  }, []);
 
+  console.log('cartItems', cartItems);
+  let totalPrice = 0;
+  let totalCount = 0;
 
-  return <div>hello from Details</div>;
+  if (cartItems[item.id]) {
+    totalPrice = cartItems[item.id].totalPrice;
+    totalCount = cartItems[item.id].totalCount;
+  }
+
+  console.log('cartItems[item.id] from Detailsііі', cartItems[item.id]);
+  return (
+    <>
+      {isLoaded ? (
+        <div id="details">
+          <div className="header">
+            <h1>{item.title} </h1>
+          </div>
+          <div className="body">
+            <div className="left">
+              <img src={imageProduct(item.img)} alt={item.title} />
+            </div>
+            <div className="right">
+              <div className="right-header">
+                <h2 className="title">{item.title} </h2>
+                <p className="subtitle">{item.company}</p>
+              </div>
+              <div className="right-body">
+                <h3>About this item</h3>
+                {/* <br /> */}
+                <p>{item.info}</p>
+              </div>
+              <Button
+                className="details-btn"
+                addedTotal={cartItems[item.id] ? cartItems[item.id] : ''}
+                totalPrice={totalPrice}
+                totalCount={totalCount}
+                onClickAddProduct={onHandleAddProduct}
+              />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div id="details">
+        <h1>hello</h1>
+          <div className="header">
+            <h1>{detailProduct.title} </h1>
+          </div>
+          <div className="body">
+            <div className="left">
+              <img src={imageProduct(detailProduct.img)} alt={detailProduct.title} />
+            </div>
+            <div className="right">
+              <div className="right-header">
+                <h2 className="title">{detailProduct.title} </h2>
+                <p className="subtitle">{detailProduct.company}</p>
+              </div>
+              <div className="right-body">
+                <h3>About this item</h3>
+                {/* <br /> */}
+                <p>{detailProduct.info}</p>
+              </div>
+              <Button
+                className="details-btn"
+                addedTotal={cartItems[detailProduct.id] ? cartItems[detailProduct.id] : ''}
+                totalPrice={totalPrice}
+                totalCount={totalCount}
+                onClickAddProduct={onHandleAddProduct}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default Details;
